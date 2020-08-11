@@ -7,10 +7,11 @@ import javax.persistence.*;
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private long agentcode;
 
     @Column(unique = true, nullable = false)
-    private String name;
+    private String agentname;
 
     private String workingarea;
     private double commission;
@@ -21,8 +22,8 @@ public class Agent {
     }
 
     //constructor of all data
-    public Agent(String name, String workingarea, double commission, String phone, String country) {
-        this.name = name;
+    public Agent(String agentname, String workingarea, double commission, String phone, String country) {
+        this.agentname = agentname;
         this.workingarea = workingarea;
         this.commission = commission;
         this.phone = phone;
@@ -38,12 +39,12 @@ public class Agent {
         this.agentcode = agentcode;
     }
 
-    public String getName() {
-        return name;
+    public String getAgentname() {
+        return agentname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAgentname(String name) {
+        this.agentname = name;
     }
 
     public String getWorkingarea() {

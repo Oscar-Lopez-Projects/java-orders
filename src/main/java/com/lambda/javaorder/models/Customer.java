@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private long custcode;
 
     @Column(unique = true, nullable = false)
@@ -21,10 +22,30 @@ public class Customer {
     private double paymentamt;
     private double outstandingamt;
     private String phone;
-    private long agentcode;
 
     public Customer() {
     }
+
+    //constructor
+
+    public Customer(long custcode, String custname,
+                    String custcity, String workingarea,
+                    String custcountry, String grade, double openingamt,
+                    double receiveamt, double paymentamt, double outstandingamt,
+                    String phone) {
+        this.custcode = custcode;
+        this.custname = custname;
+        this.custcity = custcity;
+        this.workingarea = workingarea;
+        this.custcountry = custcountry;
+        this.grade = grade;
+        this.openingamt = openingamt;
+        this.receiveamt = receiveamt;
+        this.paymentamt = paymentamt;
+        this.outstandingamt = outstandingamt;
+        this.phone = phone;
+    }
+
 
     //now list all setter and getters
 
@@ -117,11 +138,4 @@ public class Customer {
         this.phone = phone;
     }
 
-    public long getAgentcode() {
-        return agentcode;
-    }
-
-    public void setAgentcode(long agentcode) {
-        this.agentcode = agentcode;
-    }
 }

@@ -7,10 +7,8 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private long ordnum;
-
-    @Column(unique = true,nullable = false)
-    private long custcode;
 
     private double ordmount;
     private double advanceamount;
@@ -20,8 +18,7 @@ public class Order {
     }
 
     //constructor
-    public Order(long custcode, double ordmount, double advanceamount, String orderdescription) {
-        this.custcode = custcode;
+    public Order(double ordmount, double advanceamount, String orderdescription) {
         this.ordmount = ordmount;
         this.advanceamount = advanceamount;
         this.orderdescription = orderdescription;
@@ -34,14 +31,6 @@ public class Order {
 
     public void setOrdnum(long ordnum) {
         this.ordnum = ordnum;
-    }
-
-    public long getCustcode() {
-        return custcode;
-    }
-
-    public void setCustcode(long custcode) {
-        this.custcode = custcode;
     }
 
     public double getOrdmount() {

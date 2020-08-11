@@ -12,17 +12,15 @@ public class Payment {
     @Column(unique = true,nullable = false)
     private String type;
 
-    //constructor of type
-
-
-    public Payment(String type) {
-        this.type = type;
-    }
+    //connect tables
 
     public Payment() {
     }
-    //getter and setters
-
+    //Where is this coming from??????
+    public Payment(String type){
+        this.type=type;
+    }
+    //End of ^
     public long getPaymentid() {
         return paymentid;
     }
