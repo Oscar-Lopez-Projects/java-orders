@@ -25,7 +25,7 @@ public class Order {
     @ManyToMany
     @JoinTable(name = "orderspayments",
             joinColumns = @JoinColumn(name = "ordnum"),
-            inverseJoinColumns = @JoinColumn(name = "paymentId"))
+            inverseJoinColumns = @JoinColumn(name = "paymentid"))
     private Set<Payment> payments = new HashSet<>();
 
     public Order() {
