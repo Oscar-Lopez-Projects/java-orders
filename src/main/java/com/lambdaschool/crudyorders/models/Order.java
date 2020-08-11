@@ -1,4 +1,5 @@
-package com.lambda.javaorder.models;
+package com.lambdaschool.crudyorders.models;
+
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -32,11 +33,12 @@ public class Order {
     }
 
     //constructor
-    public Order(double ordamount, double advanceamount, String orderdescription, Customer customer) {
+    public Order(double ordamount, double advanceamount, Customer customer,String orderdescription) {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
-        this.orderdescription = orderdescription;
         this.customer= customer;
+        this.orderdescription = orderdescription;
+
     }
     //setters and getters for foreign key
 

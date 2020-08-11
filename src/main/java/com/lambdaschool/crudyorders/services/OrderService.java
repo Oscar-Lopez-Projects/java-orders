@@ -1,6 +1,6 @@
-package com.lambda.javaorder.services;
+package com.lambdaschool.crudyorders.services;
 
-import com.lambda.javaorder.models.Order;
+import com.lambdaschool.crudyorders.models.Order;
 
 public interface OrderService {
     Order save(Order order);

@@ -1,6 +1,6 @@
-package com.lambda.javaorder.services;
+package com.lambdaschool.crudyorders.services;
 
-import com.lambda.javaorder.models.Customer;
+import com.lambdaschool.crudyorders.models.Customer;
 
 public interface CustomerService {
     Customer save(Customer customer);

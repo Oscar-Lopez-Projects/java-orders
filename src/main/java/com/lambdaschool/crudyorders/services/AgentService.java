@@ -1,6 +1,6 @@
-package com.lambda.javaorder.services;
+package com.lambdaschool.crudyorders.services;
 
-import com.lambda.javaorder.models.Agent;
+import com.lambdaschool.crudyorders.models.Agent;
 
 public interface AgentService {
     Agent save(Agent agent);

@@ -1,12 +1,13 @@
 package com.lambdaschool.crudyorders;
 
+//import com.github.javafaker.Faker;
 import com.lambdaschool.crudyorders.models.Agent;
 import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.models.Order;
 import com.lambdaschool.crudyorders.models.Payment;
-import com.lambdaschool.crudyorders.repositories.AgentRepository;
-import com.lambdaschool.crudyorders.repositories.CustomerRepository;
-import com.lambdaschool.crudyorders.repositories.OrderRepository;
+import com.lambdaschool.crudyorders.repositories.AgentsRepository;
+import com.lambdaschool.crudyorders.repositories.CustomersRepository;
+import com.lambdaschool.crudyorders.repositories.OrdersRepository;
 import com.lambdaschool.crudyorders.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,19 +27,19 @@ public class SeedData implements CommandLineRunner {
      * Connects the customer table to this SeedData method
      */
     @Autowired
-    private CustomerRepository custrepos;
+    private CustomersRepository custrepos;
 
     /**
      * Connects the agents table to this SeedData method
      */
     @Autowired
-    private AgentRepository agentrepos;
+    private AgentsRepository agentrepos;
 
     /**
      * Connects the orders table to this SeedData method
      */
     @Autowired
-    private OrderRepository ordersrepos;
+    private OrdersRepository ordersrepos;
 
     /**
      * Connects the payment table to this SeedData method

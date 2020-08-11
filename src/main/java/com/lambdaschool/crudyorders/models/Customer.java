@@ -1,4 +1,4 @@
-package com.lambda.javaorder.models;
+package com.lambdaschool.crudyorders.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ public class Customer {
 
     @Column(unique = true, nullable = false)
     private String custname;
-
     private String custcity;
     private String workingarea;
     private String custcountry;
@@ -30,12 +29,13 @@ public class Customer {
     @JoinColumn(name = "agentcode", nullable = false)
     private Agent agent;
 
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
 
 
     //constructor
-
+    //when you switch to SeedData, you need to add agent on the constructor like listed below
     public Customer(String custname,
                     String custcity, String workingarea,
                     String custcountry, String grade, double openingamt,
@@ -51,6 +51,7 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
+        this.agent= agent;
     }
 
     public Customer() {
