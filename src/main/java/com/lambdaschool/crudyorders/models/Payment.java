@@ -1,4 +1,4 @@
-package com.lambda.javaorder.models;
+package com.lambdaschool.crudyorders.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
