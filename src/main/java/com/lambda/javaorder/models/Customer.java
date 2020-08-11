@@ -1,6 +1,8 @@
 package com.lambda.javaorder.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -23,17 +25,22 @@ public class Customer {
     private double outstandingamt;
     private String phone;
 
-    public Customer() {
-    }
+    //foreign key many customers to one and join table with agent
+    @ManyToOne
+    @JoinColumn(name = "agentcode", nullable = false)
+    private Agent agent;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
+
 
     //constructor
 
-    public Customer(long custcode, String custname,
+    public Customer(String custname,
                     String custcity, String workingarea,
                     String custcountry, String grade, double openingamt,
                     double receiveamt, double paymentamt, double outstandingamt,
-                    String phone) {
-        this.custcode = custcode;
+                    String phone, Agent agent) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -44,6 +51,26 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
+    }
+
+    public Customer() {
+    }
+    //setters and getters for the foreign keys
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
 

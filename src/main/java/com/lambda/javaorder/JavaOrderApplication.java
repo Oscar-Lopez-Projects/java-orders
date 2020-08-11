@@ -8,7 +8,6 @@ public class JavaOrderApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JavaOrderApplication.class, args);
-        System.out.println("hello");
     }
 
 }

@@ -1,6 +1,8 @@
 package com.lambda.javaorder.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "agents")
@@ -18,6 +20,10 @@ public class Agent {
     private String phone;
     private String country;
 
+    //foeign key
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Customer> customers = new ArrayList<>();
+
     public Agent() {
     }
 
@@ -29,6 +35,17 @@ public class Agent {
         this.phone = phone;
         this.country = country;
     }
+    //setter and getter for foreign key
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+
     //now all of getter and setters
 
     public long getAgentcode() {

@@ -90,5 +90,4 @@ The number must be larger than the last used id.
 50 > 25 so we are good!
  */
 
-alter
-sequence hibernate_sequence restart with 50;
+alter sequence hibernate_sequence restart with 50;

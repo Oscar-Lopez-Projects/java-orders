@@ -1,6 +1,8 @@
 package com.lambda.javaorder.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "payments")
@@ -13,6 +15,8 @@ public class Payment {
     private String type;
 
     //connect tables
+    @ManyToMany(mappedBy = "payments")
+    private Set<Order> orders = new HashSet<>();
 
     public Payment() {
     }
@@ -35,5 +39,14 @@ public class Payment {
 
     public void setType(String type) {
         this.type = type;
+    }
+    //getter and setter for foreign key
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }
