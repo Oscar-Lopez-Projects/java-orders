@@ -5,7 +5,7 @@ import com.lambdaschool.crudyorders.repositories.AgentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service(value = "agentService")
+@Service(value = "agentServices")
 public class AgentServiceImpl implements AgentService{
     @Autowired
     AgentsRepository agentrepo;
