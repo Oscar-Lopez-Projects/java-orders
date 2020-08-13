@@ -2,6 +2,7 @@ package com.lambdaschool.crudyorders.controllers;
 
 import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.services.CustomerService;
+import com.lambdaschool.crudyorders.views.OrderCounts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,14 @@ public class CustomerController {
     public ResponseEntity<?> findCustomerByNameLike(@PathVariable String custname){
         List<Customer> myList = customerServices.findAllCustomersByNameLike(custname);
         return new ResponseEntity<>(myList,HttpStatus.OK);
+    }
+
+    // http://localhost:2019/customers/orders/count - Using a custom query
+    @GetMapping(value = "/orders/count", produces = "application/json")
+    public ResponseEntity<?> getOrderCount()
+    {
+        List<OrderCounts> myList = customerServices.getOrderCounts();
+        return new ResponseEntity<>(myList, HttpStatus.OK);
     }
 
 }
