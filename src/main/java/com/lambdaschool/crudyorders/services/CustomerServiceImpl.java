@@ -2,6 +2,7 @@ package com.lambdaschool.crudyorders.services;
 
 import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.repositories.CustomersRepository;
+import com.lambdaschool.crudyorders.views.OrderCounts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> findAllCustomersByNameLike(String custn) {
         return customerrepos.findByCustnameContainingIgnoringCase(custn);
+    }
+    //4
+
+
+    @Override
+    public List<OrderCounts> getOrderCounts() {
+        List<OrderCounts> list = customerrepos.findOrderCounts();
+        return list;
     }
 
     @Override
