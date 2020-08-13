@@ -30,6 +30,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerrepos.findById(id)
                 .orElseThrow(()->new EntityNotFoundException("customer "+ id + " Not found"));
     }
+    //3
+
+    @Override
+    public List<Customer> findAllCustomersByNameLike(String custn) {
+        return customerrepos.findByCustnameContainingIgnoringCase(custn);
+    }
 
     @Override
     public Customer save(Customer customer){

@@ -33,13 +33,11 @@ public class CustomerController {
         return new ResponseEntity<>(myCustomer,HttpStatus.OK);
     }
 
-    //http://localhost:2019/customers/customer/77
-
     //http://localhost:2019/customers/namelike/mes
-
-    //http://localhost:2019/customers/namelike/cin
-
-
-
+    @GetMapping(value = "/namelike/{custname}", produces = "application/json")
+    public ResponseEntity<?> findCustomerByNameLike(@PathVariable String custname){
+        List<Customer> myList = customerServices.findAllCustomersByNameLike(custname);
+        return new ResponseEntity<>(myList,HttpStatus.OK);
+    }
 
 }

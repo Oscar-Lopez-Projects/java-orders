@@ -14,6 +14,8 @@ public interface CustomerService {
     //http://localhost:2019/customers/customer/7
     Customer findCustomersByCode(long id);
 
+    //http://localhost:2019/customers/namelike/mes
+    List<Customer> findAllCustomersByNameLike(String custn);
 
     Customer save(Customer customer);
 }
