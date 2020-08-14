@@ -21,5 +21,7 @@ public interface CustomerService {
     //last
     List<OrderCounts> getOrderCounts();
 
+    void delete(long id);
     Customer save(Customer customer);
+    Customer update(Customer customer, long id);
 }

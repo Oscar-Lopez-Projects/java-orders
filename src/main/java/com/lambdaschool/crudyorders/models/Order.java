@@ -15,8 +15,14 @@ public class Order {
     @Column(nullable = false)
     private long ordnum;
 
+    @Transient
+    public boolean hasvalueforordamount;
     private double ordamount;
+
+    @Transient
+    public boolean hasvalueforadvanceamount;
     private double advanceamount;
+
     private String orderdescription;
 
     //many to many join tables
