@@ -14,17 +14,31 @@ public class Customer {
     @Column(nullable = false)
     private long custcode;
 
+
+
+
     @Column(unique = true, nullable = false)
     private String custname;
     private String custcity;
     private String workingarea;
     private String custcountry;
     private String grade;
-    private double openingamt;
-    private double receiveamt;
-    private double paymentamt;
-    private double outstandingamt;
     private String phone;
+    @Transient // field hasvalueforopeningamt never gets saved in DB, only use locally
+    public boolean hasvalueforopeningamt;
+    private double openingamt;
+
+    @Transient
+    public boolean hasvalueforreceiveamt;
+    private double receiveamt;
+
+    @Transient
+    public boolean hasvalueforpaymentamt;
+    private double paymentamt;
+
+    @Transient
+    public boolean hasvalueforoutstandingamt;
+    private double outstandingamt;
 
     //foreign key many customers to one and join table with agent
     @ManyToOne
