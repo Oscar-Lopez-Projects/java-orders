@@ -36,7 +36,7 @@ public class OrderController {
         // location => http://localhost:2019/orders/order/{ordnum}
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newOrderURI = ServletUriComponentsBuilder.fromCurrentRequestUri() // grabbed the current request
-                .path("/{orderid}" + newOrder.getOrdnum())
+                .path("/" + newOrder.getOrdnum())
                 .build()
                 .toUri(); //convert to true URI
         responseHeaders.setLocation(newOrderURI);

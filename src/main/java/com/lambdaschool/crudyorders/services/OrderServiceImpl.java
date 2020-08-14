@@ -1,9 +1,7 @@
 package com.lambdaschool.crudyorders.services;
 
-import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.models.Order;
 import com.lambdaschool.crudyorders.models.Payment;
-import com.lambdaschool.crudyorders.repositories.CustomersRepository;
 import com.lambdaschool.crudyorders.repositories.OrdersRepository;
 import com.lambdaschool.crudyorders.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ import javax.persistence.EntityNotFoundException;
 public class OrderServiceImpl implements OrderService{
     @Autowired
     OrdersRepository orderrepos;
-
-    @Autowired
-    CustomersRepository customerrepos;
 
     @Autowired
     PaymentRepository paymentrepos;
@@ -88,15 +83,13 @@ public class OrderServiceImpl implements OrderService{
             orderrepos.findById(order.getOrdnum())
                     .orElseThrow(() -> new EntityNotFoundException("Order " + order.getOrdnum() + " Not Found!"));
 
-
+            newOrder.setOrdnum(order.getOrdnum());
         }
-        newOrder.setOrdnum(order.getOrdnum());
+
         newOrder.setOrderdescription(order.getOrderdescription());
         newOrder.setAdvanceamount(order.getAdvanceamount());
         newOrder.setOrdamount(order.getOrdamount());
-        newOrder.setCustomer(customerrepos.findById(order.getCustomer().getCustcode())
-              .orElseThrow(()-> new EntityNotFoundException("Customer " + order.getCustomer().getCustcode() +" not found")));
-
+        newOrder.setCustomer(order.getCustomer());
 
 
 
@@ -104,7 +97,7 @@ public class OrderServiceImpl implements OrderService{
 
         for (Payment p : order.getPayments())
         {
-            Payment newPay = paymentrepos.findById(p.getPaymentid()) // find payment that matches in DB
+            Payment newPay = paymentrepos.findById(p.getPaymentid())
                     .orElseThrow(() -> new EntityNotFoundException("Payment " + p.getPaymentid() + " Not Found!"));
 
             newOrder.getPayments().add(newPay);
